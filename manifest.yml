@@ -1,10 +1,10 @@
 applications:
-- name: my-first-service
-  command: node run dev
+- name: mfs-eduardo-lacerda
+  command: npm run dev
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   memory: 128M
   services:
-  - numen-trial
+  - hanadb
 properties:
     app_ssh:
       host_key_fingerprint: SHA256:EW1kh5EPAfkQNtDctkRZBprYsyX+GVe6FwK+fSpiYIg
