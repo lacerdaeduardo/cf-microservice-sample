@@ -1,0 +1,23 @@
+applications:
+- name: my-first-service
+  command: node run dev
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+  memory: 128M
+  services:
+  - numen-trial
+properties:
+    app_ssh:
+      host_key_fingerprint: SHA256:EW1kh5EPAfkQNtDctkRZBprYsyX+GVe6FwK+fSpiYIg
+      oauth_client_id: ssh-proxy
+    cc:
+      allow_app_ssh_access: true
+      default_app_ssh_access: true
+    uaa:
+      clients:
+        ssh-proxy:
+          authorized-grant-types: authorization_code
+          autoapprove: true
+          override: true
+          redirect-uri: /login
+          scope: openid,cloud_controller.read,cloud_controller.write,cloud_controller.admin
+          secret: 123
